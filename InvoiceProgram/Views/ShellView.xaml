@@ -1,0 +1,182 @@
+﻿<Window
+    x:Class="InvoiceProgram.Views.ShellView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:InvoiceProgram.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:InvoiceProgram.ViewModels"
+    Title="發票開立程式"
+    Width="800"
+    Height="600"
+    MinWidth="820"
+    MinHeight="700"
+    d:DataContext="{d:DesignInstance vm:ShellViewModel}"
+    Background="White"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  Row 0  -->
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            FontSize="24"
+            FontWeight="Bold">
+            發票開立程式
+        </TextBlock>
+
+        <!--  Row 1  -->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5,0,5,10">
+            店舖
+        </TextBlock>
+        <StackPanel
+            x:Name="SelectedStoreIsVisible"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="5,0,5,10"
+            Orientation="Vertical">
+            <ComboBox
+                x:Name="Stores"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0,0,5"
+                DisplayMemberPath="Name"
+                SelectedItem="SelectedStore" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CreateStore" Margin="0,0,5,0">新增店舖</Button>
+                <Button x:Name="DeleteStore" Margin="5,0,0,0">刪除店舖</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel
+            x:Name="CreateStoreIsVisible"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="5,0,0,10">
+            <ContentControl x:Name="ActiveManageStoreView" />
+        </StackPanel>
+
+        <!--  Row 2  -->
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="5,0,5,10">
+            印表機連結埠
+        </TextBlock>
+
+        <ComboBox
+            x:Name="SerialPorts"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5,0,5,10"
+            SelectedItem="SelectedSerialPort" />
+
+        <!--  Row 3  -->
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="5,0,5,10">
+            店舖與印表機對應
+        </TextBlock>
+
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="5,0,5,10"
+            Orientation="Vertical">
+            <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+                <Button x:Name="CreateStorePort" Margin="0,0,5,0">新增店舖與印表機對應</Button>
+                <Button x:Name="DeleteStorePort" Margin="5,0,0,0">刪除店舖與印表機對應</Button>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding StorePorts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStorePort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Row 0  -->
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="Red"
+                                    Text="{Binding Store.UniformNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="{Binding Store.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+
+                            <!--  Row 1  -->
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,0,5,0">
+                                Port:
+                            </TextBlock>
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="5,0,0,0"
+                                Foreground="Blue"
+                                Text="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <!--  Row 4  -->
+        <StackPanel
+            x:Name="CreateInvoiceIsVisible"
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5,0,5,10"
+            Orientation="Vertical">
+            <ContentControl x:Name="ActiveCreateInvoiceView" />
+        </StackPanel>
+
+        <!--  Column 2  -->
+        <StackPanel
+            x:Name="InvoiceDetailIsVisible"
+            Grid.Row="1"
+            Grid.RowSpan="5"
+            Grid.Column="2">
+            <ContentControl x:Name="ActiveInvoiceDetailView" />
+        </StackPanel>
+    </Grid>
+</Window>
