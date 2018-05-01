@@ -156,7 +156,7 @@ namespace InvoiceProgram.ViewModels
         {
             if (invoices.Count > 0)
             {
-                InvoiceNumber = (int.Parse(invoices.Last().Number) + 1).ToString();
+                InvoiceNumber = (int.Parse(invoices.Last().Number) + 1).ToString().PadLeft(8, '0');
 
                 IsInvoiceNumberEditable = false;
                 IsConfirmInvoiceNumberEnabled = false;

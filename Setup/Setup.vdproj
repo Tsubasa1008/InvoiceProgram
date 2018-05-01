@@ -3437,7 +3437,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:發票開立程式"
         "ProductCode" = "8:{5E864857-17F5-4706-8AAE-A6A1DB630938}"
-        "PackageCode" = "8:{9DBFAC45-DD70-4A00-91EE-10CA5DB3E15E}"
+        "PackageCode" = "8:{826B35F0-509C-4D07-AFEC-6FE358E38119}"
         "UpgradeCode" = "8:{B61F5CCE-7E52-4252-845D-51DFC3FD8B98}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
