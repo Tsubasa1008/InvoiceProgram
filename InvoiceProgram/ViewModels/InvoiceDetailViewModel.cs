@@ -635,7 +635,7 @@ namespace InvoiceProgram.ViewModels
                     if (dayInovices.Count > 0)
                     {
                         // 發票總金額
-                        block.SetValue(dayInovices.Select(x => x.Amount).Sum().ToString("###,##0"));
+                        block.SetValue(dayInovices.Where(x => !x.InValid).Select(x => x.Amount).Sum().ToString("###,##0"));
                     }
                     block.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                     block.Merge();
@@ -652,7 +652,7 @@ namespace InvoiceProgram.ViewModels
                     // 作廢發票號碼
                     if (dayInovices.Where(x => x.InValid == true).Count() > 0)
                     {
-                        string invalid = String.Join(",", dayInovices.Where(x => x.InValid == true).Select(x => x.Number).ToList());
+                        string invalid = String.Join(",", dayInovices.Where(x => x.InValid).Select(x => x.Number).ToList());
 
                         block.SetValue(invalid);
                     }

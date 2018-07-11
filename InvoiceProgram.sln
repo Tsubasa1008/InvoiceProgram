@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceProgram", "InvoiceProgram\InvoiceProgram.csproj", "{13B41CDD-A513-4BC5-AE25-2236D504A4F4}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{574C9A4D-4F48-4649-AE44-2E2768AFB4BB}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{FB9B3237-53ED-4D0C-B195-1E1C027E4C78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{13B41CDD-A513-4BC5-AE25-2236D504A4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13B41CDD-A513-4BC5-AE25-2236D504A4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13B41CDD-A513-4BC5-AE25-2236D504A4F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{574C9A4D-4F48-4649-AE44-2E2768AFB4BB}.Debug|Any CPU.ActiveCfg = Debug
-		{574C9A4D-4F48-4649-AE44-2E2768AFB4BB}.Release|Any CPU.ActiveCfg = Release
+		{FB9B3237-53ED-4D0C-B195-1E1C027E4C78}.Debug|Any CPU.ActiveCfg = Debug
+		{FB9B3237-53ED-4D0C-B195-1E1C027E4C78}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
